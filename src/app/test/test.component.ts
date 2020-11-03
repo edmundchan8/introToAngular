@@ -2,21 +2,38 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-test',
-  templateUrl: 'test.component.html',
-  styles: []
+  template: 
+  `<div>
+    <h2 [class]=successText >Color is green</h2>
+    <h2 [class.text-danger]="hasError"> ERROR CODE!</h2>
+    <h2 [ngClass]="messageClasses" >OBJECT DIRECTIVE</h2>
+  </div>`,
+  styles: [
+    `
+    .text-success {
+      color: green;
+    }
+    .text-danger {
+      color: red;
+    }
+    .text-special {
+      font-style: italic;
+    }
+    `
+  ]
 })
 export class TestComponent implements OnInit {
-
-  //creating new property
-  public title = "Angular Task 01"
-
-  public a ="apples"
-  public b = "bananas"
+  
+  public hasError = true;
+  public isSpecial = true;
+  public messageClasses = {
+    "text-success": !this.hasError,
+    "text-danger": this.hasError,
+    "text-special": this.isSpecial
+  }
+  public successText = "text-success"
 
   constructor() { }
-  printTwoWords(first, second){
-    return "We will combine two words, the first is " + first + " and the second is " + second + "." ;
-  }
 
   ngOnInit(): void {
   }
