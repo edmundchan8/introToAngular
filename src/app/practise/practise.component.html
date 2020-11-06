@@ -1,6 +1,12 @@
-<h1 [id]=titleID>{{title}}</h1>
-<p [id]=paragraphID>This is a new paragraph</p>
-<input [id]=inputID type="text" value="some text" />
-<br/>
-<input [disabled]=onDisabled [id]=inputID type="text" value="You can't edit me" />
-<input [disabled]=notDisabled [id]=inputID type="text" value="You'll be able to edit me" />
+<h1>Structure Directive</h1>
+
+<div *ngIf="isDisplayed; then thenBlock; else elseBlock">
+</div>
+
+<ng-template #thenBlock>
+    <h2>If you have lemons, make lemonade</h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2>Go out and buy some lemons (or lemonade!)</h2>
+</ng-template>
